@@ -16,7 +16,7 @@
 void	map_error(t_win *win)
 {
 	if(win->mapstr)
-		free(mapstr);
+		free(win->mapstr);
 	ft_printf("\e[0;31mERROR\nINVALID MAP\n");
 	exit(1);
 }
@@ -26,14 +26,14 @@ int	check_file(char *file)
 	int	i;
 	
 	i = 0;
-	while (file[i])
+	while (file[i + 1])
 		i++;
-	if(file[i - 1] == 'r' && file[i - 2] == 'e'
-		&& file[i - 3] == 'b' && file[i - 4] == '.'
-		&& file[i - 5])
+	if(file[i] == 'r' && file[i - 1] == 'e'
+		&& file[i - 2] == 'b' && file[i - 3] == '.'
+		&& file[i - 4])
 		return (1);
 	else
-		return 0;
+		return (0);
 }
 
 int main(int ac, char **av)
@@ -42,9 +42,10 @@ int main(int ac, char **av)
 
 	if(ac == 2 && check_file(av[1]))
 	{
-		if(check_map(&win, av[1]))
+		win.mapstr = ft_read_map(av[1]);
+		if(error_check(win.mapstr, win.map))
 		{
-			
+			ft_printf("helloooooo");
 		}
 		else
 			map_error(&win);

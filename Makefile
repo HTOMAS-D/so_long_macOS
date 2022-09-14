@@ -21,7 +21,7 @@ RM		= rm -f
 all:		$(NAME)
 
 $(NAME): 	 $(MLX) $(LIBFTA) $(OBJS)
-			$(CC) $(OBJS) $(CFLAGS) $(LINKS) $(MLX_FLAGS) -o $(NAME)
+			$(CC) $(OBJS) $(CFLAGS) $(LINKS) $(LIBFTA) $(MLX_FLAGS) -o $(NAME)
 			@echo "$(GREEN)Successfully built --> $(YELLOW)$(NAME)$(DEFAULT)"
 
 $(MLX):

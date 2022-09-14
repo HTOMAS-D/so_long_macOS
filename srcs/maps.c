@@ -44,13 +44,11 @@ char **ft_read_map(char *av)
 }
 
 
-char	**check_map(t_win *win, char *av)
+int	check_map(t_win *win)
 {
-	char **mapstr;
-
-	mapstr = ft_read_map(av);
-	if (!mapstr)
-		return NULL;
-	if(error_check(mapstr, win->map))
-		return NULL;
+	if (!win->mapstr)
+		return (1);
+	if(error_check(win->mapstr, win->map))
+		return (1);
+	return (0);
 }

@@ -13,6 +13,32 @@
 #include "so_long.h"
 #include "../mlx/mlx.h"
 
+int	map_size(char **mapstr, t_map *map)
+{
+	int	h;
+	int	w;
+	int	comp_w;
+
+	h = 0;
+//	w = 0;
+	comp_w = 0;
+	while (mapstr[h])
+	{
+		w = 0;
+		while (mapstr[h][w])
+			w++;
+		if(h && comp_w != w)
+			return (1);
+		comp_w = w;
+		h++;
+	}
+	if (h < 3 || (h && h == w))
+		return 1;
+	map->h = h;
+	map->w = w;
+	return (0);
+}
+
 int	check_letters(char **mapstr, t_map *map)
 {
 	int	i;
@@ -21,18 +47,45 @@ int	check_letters(char **mapstr, t_map *map)
 	map->player = 0;
 	map->collect = 0;
 	map->exit = 0;
-	whike
+	i = -1;
+	while (i++ < map->h)
+	{
+		j = -1;
+		while(j++ < map->w)
+		{
+			if(mapstr[i][j] == 'P')
+				map->player++;
+			else if (mapstr[i][j] == 'C')
+				map->collect++;
+			else if(mapstr[i][j] == 'E')
+				map->exit++;
+		}
+	}
+	if(!map->exit || !map->collect || map->player != 1)
+		return (1);
+	return (0);
 }
 
-static int	is_rectangle(char **str, t_map *map)
+int	check_wall(char **mapstr, t_map *map)
 {
-
+	int	i;
+	
+	i = 0;
+	while(i < map->w)
+	{
+		if(mapstr[0][i] != '1' || mapstr[map->h - 1][i] != '1')
+			return (1);
+		i++;
+	}
+	i = 0;
+	while(i < map->h)
+	{
+		if(mapstr[i][0] != '1' || mapstr[1][map->w - 1] != '1')
+			return (1);
+		i++;
+	}
+	return (0);
 }
-
-//static int	check_wall(char *str, t_map *map)
-//{
-//	
-//}
 
 int	error_check(char **mapstr, t_map *map)
 {
@@ -41,11 +94,11 @@ int	error_check(char **mapstr, t_map *map)
 	
 	if(!mapstr)
 		return (1);
-	i = 0;
-	while(mapstr[i])
+	i = -1;
+	while(mapstr[i++])
 	{
-		j = 0
-		while(mapstr[i][j])
+		j = -1;
+		while(mapstr[i][j++])
 		{
 			if(mapstr[i][j] != 'P' && mapstr[i][j] != 'C'
 				&& mapstr[i][j] != 'E' && mapstr[i][j] != '1'
@@ -53,7 +106,8 @@ int	error_check(char **mapstr, t_map *map)
 				return (1);
 		}
 	}
-	if(check_letters(mapstr, map) || is_rectangle(mapstr, map)
+	if(map_size(mapstr, map) || check_letters(mapstr, map)
 		|| check_wall(mapstr, map))
-		return (1);
+		return (0);
+	return (0);
 }	

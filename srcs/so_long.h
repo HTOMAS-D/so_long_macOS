@@ -33,10 +33,18 @@ typedef struct s_game
 	t_map	*map;
 }	t_win;
 
-t_win new_program(int w, int h, char *str);
-char	**check_map(t_win *win, char *av);
+//so_long.c
+int	check_file(char *file);
+void	map_error(t_win *win);
+
+//maps.c
+int	check_map(t_win *win);
 char	**ft_read_map(char *av);
-static int	check_letters(char **mapstr, t_map *map);
-static int 	is_rectangle(char *str, t_map *map);
-static int	check_wall(char *str, t_map *map);
+
+//error.c
+int	error_check(char **mapstr, t_map *map);
+int	check_wall(char **mapstr, t_map *map);
+int	map_size(char **mapstr, t_map *map);
+int	check_letters(char **mapstr, t_map *map);
+
 #endif
