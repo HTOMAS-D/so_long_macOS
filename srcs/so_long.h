@@ -25,7 +25,7 @@ typedef struct s_map
 	int	player;
 }	t_map;
 
-typedef struct s_game
+typedef struct s_win
 {
 	void 	*mlx_ptr;
 	void 	*win_ptr;
