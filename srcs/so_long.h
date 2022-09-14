@@ -35,8 +35,8 @@ typedef struct s_game
 
 t_win new_program(int w, int h, char *str);
 char	**check_map(t_win *win, char *av);
-char	**ft_read_map(char **str);
-static int	check_letters(char *str);
+char	**ft_read_map(char *av);
+static int	check_letters(char **mapstr, t_map *map);
 static int 	is_rectangle(char *str, t_map *map);
 static int	check_wall(char *str, t_map *map);
 #endif

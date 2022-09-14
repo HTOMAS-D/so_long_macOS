@@ -38,4 +38,7 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_putex(t_print *tab);
 void	ft_putexup(t_print *tab);
+char	**ft_split(const char *str, char separator);
+void	*ft_memcpy(void *dest, const void *src, size_t len);
+
 #endif

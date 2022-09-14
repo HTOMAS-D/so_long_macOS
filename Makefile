@@ -8,7 +8,7 @@ LIBFTA		= ./libft/libft.a
 
 MLX		= ./mlx/libmlx.a
 
-CFLAGS		= -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS		= #-Wall -Wextra -Werror #-g -fsanitize=address
 
 MLX_FLAGS	= -framework OpenGL -framework AppKit
 

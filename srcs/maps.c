@@ -51,6 +51,6 @@ char	**check_map(t_win *win, char *av)
 	mapstr = ft_read_map(av);
 	if (!mapstr)
 		return NULL;
-	if(error_check(mapstr, win->map)
+	if(error_check(mapstr, win->map))
 		return NULL;
 }
