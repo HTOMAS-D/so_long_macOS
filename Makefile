@@ -46,7 +46,9 @@ re:			fclean all
 god:
 			git status
 			git add .
+			git status
 			git commit -m "🔥Random Makefile Commit🔥"
+			git status
 
 #COLORS
 GREEN = \033[1;32m
