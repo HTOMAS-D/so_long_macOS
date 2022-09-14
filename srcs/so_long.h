@@ -42,8 +42,8 @@ int	check_map(t_win *win);
 char	**ft_read_map(char *av);
 
 //error.c
-int	error_check(char **mapstr, t_map *map);
-int	check_wall(char **mapstr, t_map *map);
+int	error_check(char **mapstr, t_map *map, t_win *win);
+int	check_wall(t_win win);
 int	map_size(char **mapstr, t_map *map);
 int	check_letters(char **mapstr, t_map *map);
 
