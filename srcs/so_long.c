@@ -13,33 +13,46 @@
 #include "so_long.h"
 #include "../mlx/mlx.h"
 
-int	init_shit(t_win *win, char *av)
+void	map_error(t_win *win)
 {
-	win->map = malloc(sizeof(t_win));
-	if(!win->map)
-		return (0);
-	win->map->h = 0;
-	win->map->w = 0;
-	check_map(&win, av[1]);
+	if(win->mapstr)
+		free(mapstr);
+	ft_printf("\e[0;31mERROR\nINVALID MAP\n");
+	exit(1);
+}
 
+int	check_file(char *file)
+{
+	int	i;
+	
+	i = 0;
+	while (file[i])
+		i++;
+	if(file[i - 1] == 'r' && file[i - 2] == 'e'
+		&& file[i - 3] == 'b' && file[i - 4] == '.'
+		&& file[i - 5])
+		return (1);
+	else
+		return 0;
 }
 
 int main(int ac, char **av)
 {
 	t_win win;
 
-	if(argc != 2)
+	if(ac == 2 && check_file(av[1]))
 	{
-		ft_printf("WRONG NUMBER OF ARGUMENTS\n");
-		return (1);
+		if(check_map(&win, av[1]))
+		{
+			
+		}
+		else
+			map_error(&win);
 	}
-	if(!init_all(&win ,av[1]))
+	else
 	{
-		printf("INVALID MAP\n");
-		return(1);
+		ft_printf("\e[0;31mINVALID MAP FILE\n");
+		exit(1);
 	}
-	fd = open("../maps/map.ber", O_RDONLY);
- 	mlx = mlx_init();
-	win_ptr = mlx_new_window(mlx, 599, 599, "so_long");
-	mlx_loop(mlx);
+	return 0;
 }

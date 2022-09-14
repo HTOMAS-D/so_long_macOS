@@ -62,12 +62,13 @@ static int	check_wall(char *str, t_map *map)
 	
 }
 
-int	error_check(char *mapstr, t_map *map)
+int	error_check(char **mapstr, t_map *map)
 {
 	int i;
 	int j;
 	
-	
+	if(!mapstr)
+		return (1)
 	if(!check_letters(mapstr) || !is_rectangle(mapstr, map)
 		|| !check_wall(mapstr, map))
 		return (1);
