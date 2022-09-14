@@ -1,5 +1,5 @@
 #include "so_long.h"
-#include "mlx.h"
+#include "../mlx/mlx.h"
 
 t_win new_program(int w, int h, char *str)
 {

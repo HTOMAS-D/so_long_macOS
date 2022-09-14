@@ -1,19 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: htomas-d <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 13:35:26 by htomas-d          #+#    #+#             */
+/*   Updated: 2022/09/12 11:14:31 by htomas-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
-#include "mlx.h"
+#include "../mlx/mlx.h"
 
-int main()
+int	init_shit(t_win *win, char *av)
 {
-//	t_win win;
-	void	*mlx;
-	void	*win_ptr;
-	void 	*img;
-	char 	*img_path = "../xpm/asset_boy.xpm";
-	int	img_w;
-	int	img_h;
+	win->map = malloc(sizeof(t_win));
+	if(!win->map)
+		return (0);
+	win->map->h = 0;
+	win->map->w = 0;
+	check_map(&win, av[1]);
 
-	mlx = mlx_init();
-	img = mlx_xpm_file_to_image(mlx, img_path, &img_w, &img_h);
+}
+
+int main(int ac, char **av)
+{
+	t_win win;
+
+	if(argc != 2)
+	{
+		ft_printf("WRONG NUMBER OF ARGUMENTS\n");
+		return (1);
+	}
+	if(!init_all(&win ,av[1]))
+	{
+		printf("INVALID MAP\n");
+		return(1);
+	}
+	fd = open("../maps/map.ber", O_RDONLY);
+ 	mlx = mlx_init();
 	win_ptr = mlx_new_window(mlx, 599, 599, "so_long");
-	mlx_put_image_to_window(mlx, win_ptr, img, 100, 100);
 	mlx_loop(mlx);
 }
