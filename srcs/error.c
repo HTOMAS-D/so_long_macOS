@@ -22,7 +22,6 @@ int	map_size(char **mapstr, t_map *map)
 	h = 0;
 	w = 0;
 	comp_w = 0;
-	printf("fuck from size\n");
 	while (mapstr[h])
 	{
 		w = 0;
@@ -45,15 +44,14 @@ int	check_letters(char **mapstr, t_map *map)
 	int	i;
 	int	j;
 
-	printf("fuck from letters\n");
 	map->player = 0;
 	map->collect = 0;
 	map->exit = 0;
 	i = -1;
-	while (i++ < map->h)
+	while (++i < map->h)
 	{
 		j = -1;
-		while(j++ < map->w)
+		while(++j < map->w)
 		{
 			if(mapstr[i][j] == 'P')
 				map->player++;
@@ -72,8 +70,7 @@ int	check_wall(t_win win)
 {
 	int	i;
 	
-	printf("fuck from wall\n");
-/*	i = 0;
+	i = 0;
 	while(i < win.map->w)
 	{
 		if(win.mapstr[0][i] != '1' || win.mapstr[win.map->h - 1][i] != '1')
@@ -86,7 +83,7 @@ int	check_wall(t_win win)
 		if(win.mapstr[i][0] != '1' || win.mapstr[1][win.map->w - 1] != '1')
 			return (0);
 		i++;
-	}*/
+	}
 	return (1);
 }
 
@@ -98,14 +95,11 @@ int	error_check(char **mapstr, t_map *map, t_win *win)
 	if(!mapstr)
 		return (0);
 	i = 0;
-//	printf("fuck\n");
 	while(mapstr[i])
 	{
 		j = 0;
-//		printf("fuck\n");
 		while(mapstr[i][j])
 		{
-//			printf("fuck\n");
 			if(mapstr[i][j] != 'P' && mapstr[i][j] != 'C'
 				&& mapstr[i][j] != 'E' && mapstr[i][j] != '1'
 				&& mapstr[i][j] != '0')
@@ -114,11 +108,8 @@ int	error_check(char **mapstr, t_map *map, t_win *win)
 		}
 		i++;
 	}
-	if(map_size(mapstr, map) && check_letters(mapstr, map)
-		&& check_wall(*win))
-	{	
-		printf("fuck\n");
+	if(map_size(mapstr, map) && check_wall(*win)
+		&& check_letters(mapstr, map))
 		return (1);
-	}
 	return (0);
 }	
