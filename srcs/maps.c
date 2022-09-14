@@ -24,7 +24,7 @@ char **ft_read_map(char *av)
 
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
-		return NULL;
+		return (NULL);
 	temp_map = malloc(sizeof(char));
 	temp_map[0] = '\0';
 	while(1)
@@ -38,17 +38,17 @@ char **ft_read_map(char *av)
 		free(temp);
 	}
 	mapstr = ft_split(temp_map, '\n');
-	free(temp_map);
-	close(fd);
-	return(mapstr);
+	free (temp_map);
+	close (fd);
+	return (mapstr);
 }
 
 
-int	check_map(t_win *win)
-{
-	if (!win->mapstr)
-		return (1);
-	if(error_check(win->mapstr, win->map))
-		return (1);
-	return (0);
-}
+//int	check_map(t_win *win)
+//{
+//	if (!win->mapstr)
+//		return (0);
+//	if(error_check(win->mapstr, win->map))
+//		return (1);
+//	return (0);
+//}

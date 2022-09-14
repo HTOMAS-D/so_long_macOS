@@ -43,6 +43,7 @@ int main(int ac, char **av)
 	if(ac == 2 && check_file(av[1]))
 	{
 		win.mapstr = ft_read_map(av[1]);
+		win.map = malloc(sizeof(t_map));
 		if(error_check(win.mapstr, win.map))
 		{
 			ft_printf("helloooooo");
