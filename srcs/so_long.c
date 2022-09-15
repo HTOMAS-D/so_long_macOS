@@ -48,7 +48,7 @@ int main(int ac, char **av)
 		if(error_check(win.mapstr, win.map, &win))
 		{
 			game_win(&win);
-			ft_printf("helloooooo");
+			mlx_hook(win.win_ptr, 17, 0, exit_game, &win);
 			mlx_loop(win.mlx_ptr);
 		}
 		else

@@ -72,4 +72,8 @@ void	draw_img(t_win *win);
 void	draw_e(t_win *win, int x, int y);
 void	draw_p(t_win *win, int x, int y);
 
+//hooks.c
+int	exit_game(t_win *win);
+void	free_map(char **mapstr);
+
 #endif

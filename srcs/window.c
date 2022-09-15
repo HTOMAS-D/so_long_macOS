@@ -27,10 +27,8 @@ void	game_win(t_win *win)
 	win->mlx_ptr = mlx_init();
 	win->win_ptr = mlx_new_window
 		(win->mlx_ptr, win->map->w * 64, win->map->h * 64, "so_long");
-//	win->img = malloc(sizeof(t_img));
 	win->moves = 0;
 	win->over = 0;
 	get_img(win);
 	draw_img(win);
-	printf("cheguei aqui");
 }
