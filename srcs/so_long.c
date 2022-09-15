@@ -46,6 +46,7 @@ int main(int ac, char **av)
 		win.map = malloc(sizeof(t_map));
 		if(error_check(win.mapstr, win.map, &win))
 		{
+			game_win(&win);
 			ft_printf("helloooooo");
 		}
 		else
