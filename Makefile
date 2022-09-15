@@ -8,20 +8,23 @@ LIBFTA		= ./libft/libft.a
 
 MLX		= ./mlx/libmlx.a
 
-CFLAGS		= #-Wall -Wextra -Werror #-g -fsanitize=address
-
 MLX_FLAGS	= -framework OpenGL -framework AppKit
 
 LINKS		= -L mlx -lmlx -L libft
 
 INCLUDES	= -I mlx -I libft -I .
 
+CC		= gcc# -Wall -Wextra -Werror -g -fsanitize=address
+
 RM		= rm -f
+
+.c.o:
+			$(CC) -c $< -o $@
 
 all:		$(NAME)
 
 $(NAME): 	 $(MLX) $(LIBFTA) $(OBJS)
-			$(CC) $(OBJS) $(CFLAGS) $(LINKS) $(LIBFTA) $(MLX_FLAGS) -o $(NAME)
+			$(CC) $(MLX) $(LIBFTA) $(MLX_FLAGS) $(OBJS) -o $(NAME)
 			@echo "$(GREEN)Successfully built --> $(YELLOW)$(NAME)$(DEFAULT)"
 
 $(MLX):

@@ -44,10 +44,12 @@ int main(int ac, char **av)
 	{
 		win.mapstr = ft_read_map(av[1]);
 		win.map = malloc(sizeof(t_map));
+		win.img = malloc(sizeof(t_img));
 		if(error_check(win.mapstr, win.map, &win))
 		{
 			game_win(&win);
 			ft_printf("helloooooo");
+			mlx_loop(win.mlx_ptr);
 		}
 		else
 			map_error(&win);
