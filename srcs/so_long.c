@@ -6,7 +6,7 @@
 /*   By: htomas-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:35:26 by htomas-d          #+#    #+#             */
-/*   Updated: 2022/09/12 11:14:31 by htomas-d         ###   ########.fr       */
+/*   Updated: 2022/09/16 10:54:50 by htomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int main(int ac, char **av)
 		{
 			game_win(&win);
 			mlx_hook(win.win_ptr, 17, 0, exit_game, &win);
+			mlx_key_hook(win.win_ptr, read_keys, &win);
+			mlx_hook(win.win_ptr, 02, (1L << 0), cread_keys, &win);
 			mlx_loop(win.mlx_ptr);
 		}
 		else

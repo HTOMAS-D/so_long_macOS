@@ -6,7 +6,7 @@
 /*   By: htomas-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:50:13 by htomas-d          #+#    #+#             */
-/*   Updated: 2022/09/12 11:31:12 by htomas-d         ###   ########.fr       */
+/*   Updated: 2022/09/16 14:55:54 by htomas-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 #include "../mlx/mlx.h"
 #include "../libft/ft_printf.h"
 #include <stdlib.h>
+
+
+//LINUX KEYS
+# define K_ESC					53//65307
+# define K_W					13//119
+# define K_A					0//97
+# define K_D					2//100
+# define K_S					1//115
 
 typedef struct s_img
 {
@@ -44,8 +52,8 @@ typedef struct s_win
 	t_img	*img;
 	int	moves;
 	int	over;
-	int 	player_x;
-	int	player_y;
+	int 	p_x;
+	int	p_y;
 }	t_win;
 
 //so_long.c
@@ -75,5 +83,13 @@ void	draw_p(t_win *win, int x, int y);
 //hooks.c
 int	exit_game(t_win *win);
 void	free_map(char **mapstr);
+int	read_keys(int keycode, t_win *win);
+int	cread_keys(int keycode, t_win *win);
+
+//move.c
+void	move_w(t_win *win);
+void	move_s(t_win *win);
+void	move_a(t_win *win);
+void	move_d(t_win *win);
 
 #endif

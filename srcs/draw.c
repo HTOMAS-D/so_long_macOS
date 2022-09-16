@@ -3,8 +3,8 @@
 
 void	draw_p(t_win *win, int x, int y)
 {
-	win->player_x = x;
-	win->player_y = y;
+	win->p_x = x;
+	win->p_y = y;
 	if(!win->over)
 		put_img(win, win->img->player, x, y);
 	else
